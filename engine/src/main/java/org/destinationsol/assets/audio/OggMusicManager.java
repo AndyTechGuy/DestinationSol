@@ -50,6 +50,9 @@ public class OggMusicManager {
     public OggMusicManager() {
         musicMap = new HashMap<>();
         registerMusic(MENU_MUSIC_SET, "engine:dreadnaught");
+        registerMusic(GAME_MUSIC_SET, "engine:cimmerianDawn");
+        registerMusic(GAME_MUSIC_SET, "engine:intoTheDark");
+        registerMusic(GAME_MUSIC_SET, "engine:spaceTheatre");
 
         registerAllMenuMusic();
     }
@@ -174,18 +177,11 @@ public class OggMusicManager {
                 }
                 for (String music : musicMap.get(GAME_MUSIC_SET)) {
                     registerMusic(GAME_MUSIC_SET, music);
-                    logger.info("Registered " + music);
                 }
             }
 
             json.dispose();
         }
-
-
-        registerMusic(GAME_MUSIC_SET, "engine:cimmerianDawn");
-        registerMusic(GAME_MUSIC_SET, "engine:intoTheDark");
-        registerMusic(GAME_MUSIC_SET, "engine:spaceTheatre");
-
     }
 
     /**
