@@ -35,16 +35,16 @@ import org.destinationsol.game.ship.hulls.Hull;
 public class Hero {
     private SolShip shipHero;
     private StarPort.Transcendent transcendentHero;
-    private ItemContainer mercs;
     private FarShip transcendentHeroShip;
     private boolean isTranscendent;
     private boolean isDead;
 
     public Hero(SolShip shipHero) {
+        this.shipHero = shipHero;
         if (shipHero == null) {
             throw new SolException("Something is trying to create the hero when there is no ship linked to him.");
         }
-        setSolShip(shipHero);
+        isTranscendent = false;
     }
 
     public void initialise() {
@@ -63,14 +63,8 @@ public class Hero {
 
     public void setSolShip(SolShip hero) {
         isDead = false;
-        if (hero != shipHero) {
-            mercs = new ItemContainer();
-        }
         this.shipHero = hero;
         isTranscendent = false;
-        if (shipHero.getTradeContainer() != null) {
-            throw new SolException("Hero is not supposed to have TradeContainer.");
-        }
     }
 
     public boolean isTranscendent() {
@@ -171,9 +165,9 @@ public class Hero {
         shipHero.setMoney(money);
     }
 
-    public ItemContainer getMercs() {
+    public TradeContainer getTradeContainer() {
         assertNonTranscendent();
-        return mercs;
+        return shipHero.getTradeContainer();
     }
 
     public ItemContainer getItemContainer() {

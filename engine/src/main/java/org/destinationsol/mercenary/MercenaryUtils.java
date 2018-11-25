@@ -53,7 +53,7 @@ public class MercenaryUtils {
         merc.setMerc(mercItem);
         mercItem.setSolShip(merc);
         
-        game.getHero().getMercs().add(mercItem);
+        game.getHero().getTradeContainer().getMercs().add(mercItem);
         game.getObjectManager().addObjNow(game, merc);
         return true;
     }

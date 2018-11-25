@@ -119,7 +119,7 @@ class PlayerCreator {
                 null,
                 SHIP_SPAWN_HAS_REPAIRER,
                 money,
-                null,
+                new TradeConfig(),
                 giveAmmo);
         return new Hero(farShip.toObject(game));
     }
