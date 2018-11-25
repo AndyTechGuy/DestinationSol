@@ -211,7 +211,6 @@ public class SolApplication implements ApplicationListener {
 
         inputManager.setScreen(this, menuScreens.loading);
         menuScreens.loading.setMode(tut, shipName, isNewGame);
-        musicManager.registerModuleMusic(shipName);
         musicManager.playMusic(OggMusicManager.GAME_MUSIC_SET, options);
     }
 
@@ -224,7 +223,6 @@ public class SolApplication implements ApplicationListener {
 
         solGame = new SolGame(shipName, tut, isNewGame, commonDrawer, context, worldConfig);
         inputManager.setScreen(this, solGame.getScreens().mainGameScreen);
-        musicManager.registerModuleMusic(shipName);
         musicManager.playMusic(OggMusicManager.GAME_MUSIC_SET, options);
     }
 
