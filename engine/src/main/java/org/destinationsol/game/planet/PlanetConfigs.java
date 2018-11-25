@@ -24,11 +24,7 @@ import org.destinationsol.game.GameColors;
 import org.destinationsol.game.item.ItemManager;
 import org.terasology.assets.ResourceUrn;
 
-import java.util.Map;
-import java.util.List;
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.Set;
+import java.util.*;
 
 public class PlanetConfigs {
     private final Map<String, PlanetConfig> allConfigs;
@@ -45,6 +41,8 @@ public class PlanetConfigs {
         Set<ResourceUrn> planetJsonConfigs = Assets.getAssetHelper().list(Json.class, "[a-zA-Z0-9]*:planetsConfig");
 
         for (ResourceUrn planetConfigJson : planetJsonConfigs) {
+            Assets.cacheLists();
+
             Json json = Assets.getJson(planetConfigJson.toString());
             JsonValue rootNode = json.getJsonValue();
 
@@ -61,6 +59,7 @@ public class PlanetConfigs {
             }
 
             json.dispose();
+            Assets.uncacheLists();
         }
     }
 
