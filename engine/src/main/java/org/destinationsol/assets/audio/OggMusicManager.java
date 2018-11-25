@@ -191,15 +191,15 @@ public class OggMusicManager {
         Set<ResourceUrn> configUrnList = Assets.getAssetHelper().list(Json.class, "[a-zA-Z]*:musicConfig");
 
         for (ResourceUrn configUrn : configUrnList) {
-            String urnString = configUrn.toString();
-            Json musicJson = Assets.getJson(urnString);
+            String urn = configUrn.toString();
+            Json musicJson = Assets.getJson(urn);
             JSONObject musicNode = musicJson.getJsonValue();
 
             for (Object musicFileName : musicNode.getJSONArray("menuMusic")) {
                 if (!(musicFileName instanceof String))
                     break;
                 String music = (String) musicFileName;
-                registerMusic(MENU_MUSIC_SET, urnString.split(":")[0] + ":" + music);
+                registerMusic(MENU_MUSIC_SET, urn.split(":")[0] + ":" + music);
             }
         }
     }
