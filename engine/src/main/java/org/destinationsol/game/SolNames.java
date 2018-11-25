@@ -20,21 +20,20 @@ import org.destinationsol.assets.Assets;
 import org.destinationsol.assets.json.Json;
 import org.terasology.assets.ResourceUrn;
 
-import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Set;
 
 public class SolNames {
-    public final HashMap<String, ArrayList<String>> planets;
+    public final ArrayList<String> planets;
     public final ArrayList<String> systems;
 
     public SolNames() {
-        planets = new HashMap<String, ArrayList<String>>();
+        planets = new ArrayList<String>();
         systems = new ArrayList<String>();
 
         final Set<ResourceUrn> planetNameConfigs = Assets.getAssetHelper().list(Json.class, "[a-zA-Z0-9]*:planetNamesConfig");
         for (ResourceUrn planetNameConfig : planetNameConfigs) {
-            planets.put(planetNameConfig.getModuleName().toString(), readList(planetNameConfig.toString()));
+            planets.addAll(readList(planetNameConfig.toString()));
         }
 
         final Set<ResourceUrn> systemNameConfigs = Assets.getAssetHelper().list(Json.class, "[a-zA-Z0-9]*:systemNamesConfig");

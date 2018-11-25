@@ -45,12 +45,11 @@ public class PlanetConfigs {
         Set<ResourceUrn> planetJsonConfigs = Assets.getAssetHelper().list(Json.class, "[a-zA-Z0-9]*:planetsConfig");
 
         for (ResourceUrn planetConfigJson : planetJsonConfigs) {
-            String moduleName = planetConfigJson.getModuleName().toString();
             Json json = Assets.getJson(planetConfigJson.toString());
             JsonValue rootNode = json.getJsonValue();
 
             for (JsonValue node : rootNode) {
-                PlanetConfig planetConfig = PlanetConfig.load(node, hullConfigs, cols, itemManager, moduleName);
+                PlanetConfig planetConfig = PlanetConfig.load(node, hullConfigs, cols, itemManager);
                 allConfigs.put(node.name, planetConfig);
                 if (planetConfig.hardOnly) {
                     hard.add(planetConfig);
