@@ -26,6 +26,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import org.destinationsol.assets.Assets;
@@ -100,6 +101,18 @@ public class CommonDrawer implements ResizeSubscriber {
         }
 
         font.draw(spriteBatch, layout, x, y);
+    }
+
+    public void drawString(String s, float x, float y, float fontSize, UiDrawer.TextAlignment align, boolean verticalCentering, Color col, float rot) {
+        // from https://stackoverflow.com/questions/18942416/text-rotation-libgdx
+        Matrix4 mx4Font = new Matrix4();
+        Matrix4 oldMatrix = spriteBatch.getTransformMatrix().cpy();
+        mx4Font.trn(x, y, 0);
+        mx4Font.rotate(new Vector3(0, 0, 1), rot);
+
+        spriteBatch.setTransformMatrix(mx4Font);
+        drawString(s, 0, 0, fontSize, align, verticalCentering, col);
+        spriteBatch.setTransformMatrix(oldMatrix);
     }
 
     public float getLineSpacing(float fontSize) {

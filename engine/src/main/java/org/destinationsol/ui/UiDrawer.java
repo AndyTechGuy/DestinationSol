@@ -93,6 +93,10 @@ public class UiDrawer implements ResizeSubscriber {
         drawer.drawString(s, x, y, scale * fontSize, align, centered, tint);
     }
 
+    public void drawString(String s, float x, float y, float scale, TextAlignment align, boolean centered, Color tint, float angle) {
+        drawer.drawString(s, x, y, scale * fontSize, align, centered, tint, angle);
+    }
+
     /**
      * Returns the visible length of a string when drawn.
      *
