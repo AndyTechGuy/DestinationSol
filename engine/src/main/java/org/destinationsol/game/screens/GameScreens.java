@@ -29,7 +29,7 @@ public class GameScreens {
 
     public GameScreens(SolApplication cmp, Context context) {
         mainGameScreen = new MainGameScreen(context);
-        mapScreen = new MapScreen();
+        mapScreen = new MapScreen(cmp.getOptions());
         menuScreen = new MenuScreen(cmp.getOptions());
         inventoryScreen = new InventoryScreen();
         talkScreen = new TalkScreen();

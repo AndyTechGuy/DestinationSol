@@ -162,11 +162,6 @@ public class MainGameScreen extends SolUiBaseScreen {
                                             });
         buttonList.addElement(talkButton);
 
-        mapButton = new UiTextButton().setDisplayName("Map")
-                                      .enableSound()
-                                      .setTriggerKey(gameOptions.getKeyMap());
-        buttonList.addElement(mapButton);
-
         mercenariesButton = new UiTextButton().setDisplayName("Mercenaries")
                                               .enableSound()
                                               .setTriggerKey(gameOptions.getKeyMercenaryInteraction())
